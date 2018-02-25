@@ -10,36 +10,45 @@ class App extends Component {
       { name: 'Mostafa', age: 28 },
     ]
   };
-  swishNameHandler = ()=>{
+  swishNameHandler = (newName) => {
     // Do Not Do This: this.state.persons[0].name = 'Abdulrahman';
     this.setState({
-      persons:[
-        { name: 'Abdulrahman', age: 26 },
+      persons: [
+        { name: newName, age: 26 },
         { name: 'Islam', age: 25 },
         { name: 'Mostafa', age: 29 },
       ]
-    })
-      
-    console.log('clicked !!')
+    });
+  }
+  changeNameHandler= (event) => {
+    this.setState({
+      persons: [
+        { name: 'abdulrahman', age: 26 },
+        { name: event.target.value, age: 25 },
+        { name: 'Mostafa', age: 29 },
+      ]
+    });
   }
   render() {
     return (
       <div className="App">
         <h1>Hello World</h1>
-        <button onClick={this.swishNameHandler}>
-        Swish Names
+        <button 
+          onClick={(event) =>  this.swishNameHandler('Abdulrahman')}>
+          Swish Names
         </button>
-        <Person 
-          name={this.state.persons[0].name} 
+        <Person
+          name={this.state.persons[0].name}
           age={this.state.persons[0].age} />
-        <Person 
-          name={this.state.persons[1].name} 
-          click={this.swishNameHandler}
+        <Person
+          name={this.state.persons[1].name}
+          click={(event) =>  this.swishNameHandler('abdo!')}
+          changed={this.changeNameHandler}
           age={this.state.persons[1].age} >Some Dynamic Data</Person>
-        <Person 
-          name={this.state.persons[2].name} 
+        <Person
+          name={this.state.persons[2].name}
           age={this.state.persons[2].age} />
-      </div>  
+      </div>
     );
     //Old Syntax
     //return React.createElement('div',{className:'App'},React.createElement('h1',null,'Dos This Work?'));

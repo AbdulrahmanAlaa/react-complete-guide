@@ -20,7 +20,8 @@ class App extends Component {
       ]
     });
   }
-  changeNameHandler= (event) => {
+
+  changeNameHandler = (event) => {
     this.setState({
       persons: [
         { name: 'abdulrahman', age: 26 },
@@ -29,12 +30,20 @@ class App extends Component {
       ]
     });
   }
+  
   render() {
+    const style = {
+      border: '1px solid #ccc',
+      padding: '10px',
+      borderShadow: '1px 2px 3px #eee',
+      cursor: 'pointer'
+    };
     return (
       <div className="App">
         <h1>Hello World</h1>
-        <button 
-          onClick={(event) =>  this.swishNameHandler('Abdulrahman')}>
+        <button
+          style={style}
+          onClick={(event) => this.swishNameHandler('Abdulrahman')}>
           Swish Names
         </button>
         <Person
@@ -42,7 +51,7 @@ class App extends Component {
           age={this.state.persons[0].age} />
         <Person
           name={this.state.persons[1].name}
-          click={(event) =>  this.swishNameHandler('abdo!')}
+          click={(event) => this.swishNameHandler('abdo!')}
           changed={this.changeNameHandler}
           age={this.state.persons[1].age} >Some Dynamic Data</Person>
         <Person

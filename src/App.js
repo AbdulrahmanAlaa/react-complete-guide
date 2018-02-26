@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import classes from './App.css';
 import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 class App extends Component {
@@ -75,17 +75,17 @@ class App extends Component {
         backgroundColor: 'lightgray'
       };
     }
-    let classes = [];
+    let assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push('red');
     }
     if (this.state.persons.length <= 1) {
-      classes.push('light');
+      assignedClasses.push('light');
     }
     return (
       <StyleRoot>
-        <div className="App">
-          <h1 className={classes.join(' ')} >Hello World</h1>
+        <div className={classes.App}>
+          <h1 className={assignedClasses.join(' ')} >Hello World</h1>
           <button
             style={style}
             key="btnNameChange"
@@ -106,4 +106,4 @@ class App extends Component {
   }
 }
 
-export default Radium(App);
+export default App;

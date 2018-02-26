@@ -29,7 +29,13 @@ class App extends Component {
   }
   changeNameHandler = (event, index) => {
     const persons = [...this.state.persons];
-    persons[index].name = event.target.value;
+    
+    // Old: Object.assign({},this.state.persons[index]);
+    const person = {
+      ...persons[index]
+    }
+    person.name = event.target.value;
+    persons[index] = person;
     this.setState({ persons });
   }
   deleteHandler = (personIndex) => {

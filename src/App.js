@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 class App extends Component {
   state = {
@@ -71,7 +71,7 @@ class App extends Component {
         })}
       </div>);
       style.backgroundColor = 'red';
-      style[':hover']= {
+      style[':hover'] = {
         backgroundColor: 'lightgray'
       };
     }
@@ -83,21 +83,23 @@ class App extends Component {
       classes.push('light');
     }
     return (
-      <div className="App">
-        <h1 className={classes.join(' ')} >Hello World</h1>
-        <button
-          style={style}
-          key="btnNameChange"
-          onClick={(event) => this.swishNameHandler('Abdulrahman')}>
-          Swish Names
+      <StyleRoot>
+        <div className="App">
+          <h1 className={classes.join(' ')} >Hello World</h1>
+          <button
+            style={style}
+            key="btnNameChange"
+            onClick={(event) => this.swishNameHandler('Abdulrahman')}>
+            Swish Names
         </button>
-        <button
-          style={style}
-          onClick={this.togglePersonsHandler}>
-          Toggle Persons
+          <button
+            style={style}
+            onClick={this.togglePersonsHandler}>
+            Toggle Persons
       </button>
-        {persons}
-      </div>
+          {persons}
+        </div>
+      </StyleRoot>
     );
     //Old Syntax
     //return React.createElement('div',{className:'App'},React.createElement('h1',null,'Dos This Work?'));

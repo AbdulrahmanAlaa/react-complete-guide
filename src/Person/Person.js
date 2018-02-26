@@ -10,7 +10,10 @@ const person = (props) => {
         boxShadow:'1px 2px 3px #eee',
         backgroundColor:'#ee5050',
         fontSize:'12pt',
-        color:'white'
+        color:'white',
+        '@media (max-width: 500px)':{
+            width: '100%'
+        }
     }
     return (
         <div className="Person">

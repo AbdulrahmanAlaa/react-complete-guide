@@ -27,14 +27,10 @@ class App extends Component {
       showPersons: !isShow
     })
   }
-  changeNameHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: 'abdulrahman', age: 26 },
-        { name: event.target.value, age: 25 },
-        { name: 'Mostafa', age: 29 },
-      ]
-    });
+  changeNameHandler = (event, index) => {
+    const persons = [...this.state.persons];
+    persons[index].name = event.target.value;
+    this.setState({ persons });
   }
   deleteHandler = (personIndex) => {
     // Old: const persons = this.state.persons.splice();
@@ -54,6 +50,7 @@ class App extends Component {
       persons = (<div>
         {this.state.persons.map((person, index) => {
           return <Person
+            changed={(event) =>{ this.changeNameHandler.call(this, event, index)}}
             key={person.id}
             name={person.name}
             age={person.age}

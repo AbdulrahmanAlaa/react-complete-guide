@@ -29,7 +29,7 @@ class App extends Component {
   }
   changeNameHandler = (event, index) => {
     const persons = [...this.state.persons];
-    
+
     // Old: Object.assign({},this.state.persons[index]);
     const person = {
       ...persons[index]
@@ -49,21 +49,24 @@ class App extends Component {
       border: '1px solid #ccc',
       padding: '10px',
       borderShadow: '1px 2px 3px #eee',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      backgroundColor: 'green',
+      color:'white'
     };
     let persons = null;
     if (this.state.showPersons) {
       persons = (<div>
         {this.state.persons.map((person, index) => {
           return <Person
-            changed={(event) =>{ this.changeNameHandler.call(this, event, index)}}
+            changed={(event) => { this.changeNameHandler.call(this, event, index) }}
             key={person.id}
             name={person.name}
             age={person.age}
             click={(event) => this.deleteHandler(index)}
           />
         })}
-      </div>)
+      </div>);
+      style.backgroundColor = 'red';
     }
     return (
       <div className="App">

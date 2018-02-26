@@ -5,9 +5,9 @@ import Person from './Person/Person';
 class App extends Component {
   state = {
     persons: [
-      { name: 'Abdo', age: 26 },
-      { name: 'Islam', age: 25 },
-      { name: 'Mostafa', age: 28 },
+      { id: 1, name: 'Abdo', age: 26 },
+      { id: 2, name: 'Islam', age: 25 },
+      { id: 3, name: 'Mostafa', age: 28 },
     ],
     showPersons: false
   };
@@ -15,9 +15,9 @@ class App extends Component {
     // Do Not Do This: this.state.persons[0].name = 'Abdulrahman';
     this.setState({
       persons: [
-        { name: newName, age: 26 },
-        { name: 'Islam', age: 25 },
-        { name: 'Mostafa', age: 29 },
+        { id: 1, name: newName, age: 26 },
+        { id: 2, name: 'Islam', age: 25 },
+        { id: 3, name: 'Mostafa', age: 28 },
       ]
     });
   }
@@ -36,11 +36,11 @@ class App extends Component {
       ]
     });
   }
-  deleteHandler=(personIndex)=>{
+  deleteHandler = (personIndex) => {
     // Old: const persons = this.state.persons.splice();
     const persons = [...this.state.persons];
-    persons.splice(personIndex,1);
-    this.setState({persons});
+    persons.splice(personIndex, 1);
+    this.setState({ persons });
   }
   render() {
     const style = {
@@ -52,11 +52,12 @@ class App extends Component {
     let persons = null;
     if (this.state.showPersons) {
       persons = (<div>
-        {this.state.persons.map((person,index) => {
-          return <Person 
-            name={person.name} 
-            age={person.age} 
-            click={(event) => this.deleteHandler(index)} 
+        {this.state.persons.map((person, index) => {
+          return <Person
+            key={person.id}
+            name={person.name}
+            age={person.age}
+            click={(event) => this.deleteHandler(index)}
           />
         })}
       </div>)

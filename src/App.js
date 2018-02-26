@@ -36,7 +36,11 @@ class App extends Component {
       ]
     });
   }
-
+  deleteHandler=(personIndex)=>{
+    const persons = this.state.persons;
+    persons.splice(personIndex,1);
+    this.setState({persons});
+  }
   render() {
     const style = {
       border: '1px solid #ccc',
@@ -47,8 +51,12 @@ class App extends Component {
     let persons = null;
     if (this.state.showPersons) {
       persons = (<div>
-        {this.state.persons.map((person) => {
-          return <Person name={person.name} age={person.age} click={(event) => this.swishNameHandler('abdo!')} />
+        {this.state.persons.map((person,index) => {
+          return <Person 
+            name={person.name} 
+            age={person.age} 
+            click={(event) => this.deleteHandler(index)} 
+          />
         })}
       </div>)
     }

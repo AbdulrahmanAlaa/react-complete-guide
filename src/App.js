@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Radium from 'radium';
 import Person from './Person/Person';
 class App extends Component {
   state = {
@@ -51,7 +52,10 @@ class App extends Component {
       borderShadow: '1px 2px 3px #eee',
       cursor: 'pointer',
       backgroundColor: 'green',
-      color: 'white'
+      color: 'white',
+      ':hover': {
+        backgroundColor: 'lightgreen'
+      }
     };
     let persons = null;
     if (this.state.showPersons) {
@@ -67,6 +71,9 @@ class App extends Component {
         })}
       </div>);
       style.backgroundColor = 'red';
+      style[':hover']= {
+        backgroundColor: 'lightgray'
+      };
     }
     let classes = [];
     if (this.state.persons.length <= 2) {
@@ -80,6 +87,7 @@ class App extends Component {
         <h1 className={classes.join(' ')} >Hello World</h1>
         <button
           style={style}
+          key="btnNameChange"
           onClick={(event) => this.swishNameHandler('Abdulrahman')}>
           Swish Names
         </button>
@@ -96,4 +104,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Radium(App);

@@ -5,17 +5,17 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     console.log('[App] constructor');
-}
-componentWillMount(){
+  }
+  componentWillMount() {
     console.log('[App] componentWillMount');
-}
-componentDidMount(){
+  }
+  componentDidMount() {
     console.log('[App] componentDidMount');
 
-}
+  }
   state = {
     persons: [
       { id: 1, name: 'Abdo', age: 26 },
@@ -47,6 +47,20 @@ componentDidMount(){
     persons.splice(personIndex, 1);
     this.setState({ persons });
   }
+  //Update state 
+  componentWillReceiveProps(nextProps) {
+    console.log('[Update App] componentWillReceiveProps', nextProps);
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[Update App] shouldComponentUpdate', this.state.showPersons,nextState.showPersons);
+    return this.state.showPersons !== nextState.showPersons;
+  }
+  componentWillUpdate(nextProps, nextState) {
+    console.log('[Update App] componentWillUpdate', nextProps, nextState);
+  }
+  componentDidUpdate() {
+    console.log('[Update App] componentDidUpdate');
+  }
   render() {
     console.log('[App] Render');
 
@@ -60,7 +74,8 @@ componentDidMount(){
 
     return (
       <div className={classes.App}>
-        <Cockpit
+      <button onClick={() => this.setState({showPersons:true})} >Show Persons</button>  
+      <Cockpit
           persons={this.state.persons}
           showPersons={this.state.showPersons}
           clicked={this.togglePersonsHandler}

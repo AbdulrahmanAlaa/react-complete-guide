@@ -18,7 +18,8 @@ export default class Persons extends Component {
     }
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[Update Persons] shouldComponentUpdate', nextProps, nextState);
-        return true;
+        return this.props.persons !== nextProps.persons;
+        // return true;
     }
     componentWillUpdate(nextProps, nextState) {
         console.log('[Update Persons] componentWillUpdate', nextProps, nextState);

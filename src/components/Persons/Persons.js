@@ -1,17 +1,30 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import Person from './Person/Person';
 
-export default  class Persons extends Component {
-    constructor(props){
+export default class Persons extends Component {
+    constructor(props) {
         super(props);
         console.log('[Persons] constructor');
     }
-    componentWillMount(){
+    componentWillMount() {
         console.log('[Persons] componentWillMount');
     }
-    componentDidMount(){
+    componentDidMount() {
         console.log('[Persons] componentDidMount');
-
+    }
+    //Update state 
+    componentWillReceiveProps(nextProps) {
+        console.log('[Update Persons] componentWillReceiveProps',nextProps);
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('[Update Persons] shouldComponentUpdate', nextProps, nextState);
+        return true;
+    }
+    componentWillUpdate(nextProps, nextState) {
+        console.log('[Update Persons] componentWillUpdate', nextProps, nextState);
+    }
+    componentDidUpdate() {
+        console.log('[Update Persons] componentDidUpdate');
     }
     render() {
         console.log('[Persons] render');

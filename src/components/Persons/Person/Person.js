@@ -13,6 +13,9 @@ export default class Person extends Component{
         console.log('[Person] componentDidMount');
 
     }
+
+    
+
     render(){
         console.log('[Person] render');
         return (

@@ -1,16 +1,28 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classes from './Person.css'
-import Radium from 'radium';
 
-const person = (props) => {
-    return (
-        <div className={classes.Person}>
-            <p onClick={props.click}>This is a {props.name} and i am {props.age} years old </p>
-            <p>{props.children}</p>
-            <input type="text" value={props.name} onChange={props.changed} />
-            <button onClick={props.click}>Delete</button>
-        </div>
-    );
+export default class Person extends Component{
+    constructor(props){
+        super(props);
+        console.log('[Person] constructor');
+    }
+    componentWillMount(){
+        console.log('[Person] componentWillMount');
+    }
+    componentDidMount(){
+        console.log('[Person] componentDidMount');
 
+    }
+    render(){
+        console.log('[Person] render');
+        return (
+            <div className={classes.Person}>
+                <p onClick={this.props.click}>This is a {this.props.name} and i am {this.props.age} years old </p>
+                <p>{this.props.children}</p>
+                <input type="text" value={this.props.name} onChange={this.props.changed} />
+                <button onClick={this.props.click}>Delete</button>
+            </div>
+        );
+    
+    }
 }
-export default person;

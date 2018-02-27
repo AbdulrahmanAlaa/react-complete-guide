@@ -5,6 +5,17 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    console.log('[App] constructor');
+}
+componentWillMount(){
+    console.log('[App] componentWillMount');
+}
+componentDidMount(){
+    console.log('[App] componentDidMount');
+
+}
   state = {
     persons: [
       { id: 1, name: 'Abdo', age: 26 },
@@ -37,6 +48,7 @@ class App extends Component {
     this.setState({ persons });
   }
   render() {
+    console.log('[App] Render');
 
     let persons = null;
     if (this.state.showPersons) {

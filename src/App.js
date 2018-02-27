@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import classes from './App.css';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 class App extends Component {
   state = {
     persons: [
@@ -49,18 +50,21 @@ class App extends Component {
     let persons = null;
     let btnClass = null;
     if (this.state.showPersons) {
-      persons = (<div>
-        {this.state.persons.map((person, index) => {
-          return <Person
-            changed={(event) => { this.changeNameHandler.call(this, event, index) }}
-            key={person.id}
-            name={person.name}
-            age={person.age}
-            click={(event) => this.deleteHandler(index)}
-          />
-        })}
-      </div>);
-      btnClass=classes.Red;
+      persons = (
+        <ErrorBoundary>
+          <div>
+            {this.state.persons.map((person, index) => {
+              return <Person
+                changed={(event) => { this.changeNameHandler.call(this, event, index) }}
+                key={person.id}
+                name={person.name}
+                age={person.age}
+                click={(event) => this.deleteHandler(index)}
+              />
+            })}
+          </div>
+        </ErrorBoundary>);
+      btnClass = classes.Red;
     }
     let assignedClasses = [];
     if (this.state.persons.length <= 2) {

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../logo.svg';
 import classes from './App.css';
-import Person from '../components/Persons/Person/Person';
-import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons';
 class App extends Component {
   state = {
     persons: [
@@ -12,16 +11,6 @@ class App extends Component {
     ],
     showPersons: false
   };
-  swishNameHandler = (newName) => {
-    // Do Not Do This: this.state.persons[0].name = 'Abdulrahman';
-    this.setState({
-      persons: [
-        { id: 1, name: newName, age: 26 },
-        { id: 2, name: 'Islam', age: 25 },
-        { id: 3, name: 'Mostafa', age: 28 },
-      ]
-    });
-  }
   togglePersonsHandler = (event) => {
     const isShow = this.state.showPersons;
     this.setState({
@@ -51,19 +40,14 @@ class App extends Component {
     let btnClass = null;
     if (this.state.showPersons) {
       persons = (
-        <ErrorBoundary>
-          <div>
-            {this.state.persons.map((person, index) => {
-              return <Person
-                changed={(event) => { this.changeNameHandler.call(this, event, index) }}
-                key={person.id}
-                name={person.name}
-                age={person.age}
-                click={(event) => this.deleteHandler(index)}
-              />
-            })}
-          </div>
-        </ErrorBoundary>);
+        <div>
+          <Persons
+            persons={this.state.persons}
+            changed={this.changeNameHandler}
+            delete={this.deleteHandler}
+          />
+        </div>
+      );
       btnClass = classes.Red;
     }
     let assignedClasses = [];
@@ -77,12 +61,6 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <h1 className={assignedClasses.join(' ')} >Hello World</h1>
-        <button
-          class
-          key="btnNameChange"
-          onClick={(event) => this.swishNameHandler('Abdulrahman')}>
-          Swish Names
-        </button>
         <button
           className={btnClass}
           onClick={this.togglePersonsHandler}>

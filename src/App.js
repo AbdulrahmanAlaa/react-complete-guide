@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import classes from './App.css';
-import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 class App extends Component {
   state = {
@@ -48,6 +47,7 @@ class App extends Component {
   render() {
 
     let persons = null;
+    let btnClass = null;
     if (this.state.showPersons) {
       persons = (<div>
         {this.state.persons.map((person, index) => {
@@ -60,14 +60,12 @@ class App extends Component {
           />
         })}
       </div>);
-      // style.backgroundColor = 'red';
-      // style[':hover'] = {
-      //   backgroundColor: 'lightgray'
-      // };
+      btnClass=classes.Red;
     }
     let assignedClasses = [];
     if (this.state.persons.length <= 2) {
       assignedClasses.push('red');
+
     }
     if (this.state.persons.length <= 1) {
       assignedClasses.push('light');
@@ -76,12 +74,13 @@ class App extends Component {
       <div className={classes.App}>
         <h1 className={assignedClasses.join(' ')} >Hello World</h1>
         <button
-
+          class
           key="btnNameChange"
           onClick={(event) => this.swishNameHandler('Abdulrahman')}>
           Swish Names
         </button>
         <button
+          className={btnClass}
           onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>

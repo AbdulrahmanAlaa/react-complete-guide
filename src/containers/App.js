@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import logo from '../logo.svg';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
-class App extends Component {
+class App extends PureComponent {
   constructor(props) {
     super(props);
     console.log('[App] constructor');
@@ -51,10 +51,10 @@ class App extends Component {
   componentWillReceiveProps(nextProps) {
     console.log('[Update App] componentWillReceiveProps', nextProps);
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('[Update App] shouldComponentUpdate', this.state.showPersons,nextState.showPersons);
-    return this.state.showPersons !== nextState.showPersons;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('[Update App] shouldComponentUpdate', this.state.showPersons,nextState.showPersons);
+  //   return this.state.showPersons !== nextState.showPersons;
+  // }
   componentWillUpdate(nextProps, nextState) {
     console.log('[Update App] componentWillUpdate', nextProps, nextState);
   }

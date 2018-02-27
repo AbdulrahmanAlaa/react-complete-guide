@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
+
 class App extends Component {
   state = {
     persons: [
@@ -37,35 +39,20 @@ class App extends Component {
   render() {
 
     let persons = null;
-    let btnClass = null;
     if (this.state.showPersons) {
-      persons = (
-        <div>
-          <Persons
-            persons={this.state.persons}
-            changed={this.changeNameHandler}
-            delete={this.deleteHandler}
-          />
-        </div>
-      );
-      btnClass = classes.Red;
+      persons = <Persons
+        persons={this.state.persons}
+        changed={this.changeNameHandler}
+        delete={this.deleteHandler} />;
     }
-    let assignedClasses = [];
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push('red');
 
-    }
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push('light');
-    }
     return (
       <div className={classes.App}>
-        <h1 className={assignedClasses.join(' ')} >Hello World</h1>
-        <button
-          className={btnClass}
-          onClick={this.togglePersonsHandler}>
-          Toggle Persons
-        </button>
+        <Cockpit
+          persons={this.state.persons}
+          showPersons={this.state.showPersons}
+          clicked={this.togglePersonsHandler}
+        />
         {persons}
       </div>
     );

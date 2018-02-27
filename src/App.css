@@ -9,3 +9,22 @@
 .light {
     font-weight: 100;
 }
+
+.App button {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-shadow: 1px 2px 3px #eee;
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+
+.App button:hover {
+    background-color: lightgreen;
+}
+.App button.Red{
+  
+}
+.App button:hover {
+  background-color: lightgreen;
+}

@@ -46,17 +46,7 @@ class App extends Component {
     this.setState({ persons });
   }
   render() {
-    const style = {
-      border: '1px solid #ccc',
-      padding: '10px',
-      borderShadow: '1px 2px 3px #eee',
-      cursor: 'pointer',
-      backgroundColor: 'green',
-      color: 'white',
-      ':hover': {
-        backgroundColor: 'lightgreen'
-      }
-    };
+
     let persons = null;
     if (this.state.showPersons) {
       persons = (<div>
@@ -70,10 +60,10 @@ class App extends Component {
           />
         })}
       </div>);
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'lightgray'
-      };
+      // style.backgroundColor = 'red';
+      // style[':hover'] = {
+      //   backgroundColor: 'lightgray'
+      // };
     }
     let assignedClasses = [];
     if (this.state.persons.length <= 2) {
@@ -83,23 +73,20 @@ class App extends Component {
       assignedClasses.push('light');
     }
     return (
-      <StyleRoot>
-        <div className={classes.App}>
-          <h1 className={assignedClasses.join(' ')} >Hello World</h1>
-          <button
-            style={style}
-            key="btnNameChange"
-            onClick={(event) => this.swishNameHandler('Abdulrahman')}>
-            Swish Names
+      <div className={classes.App}>
+        <h1 className={assignedClasses.join(' ')} >Hello World</h1>
+        <button
+
+          key="btnNameChange"
+          onClick={(event) => this.swishNameHandler('Abdulrahman')}>
+          Swish Names
         </button>
-          <button
-            style={style}
-            onClick={this.togglePersonsHandler}>
-            Toggle Persons
-      </button>
-          {persons}
-        </div>
-      </StyleRoot>
+        <button
+          onClick={this.togglePersonsHandler}>
+          Toggle Persons
+        </button>
+        {persons}
+      </div>
     );
     //Old Syntax
     //return React.createElement('div',{className:'App'},React.createElement('h1',null,'Dos This Work?'));

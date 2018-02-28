@@ -4,6 +4,7 @@ import Person from './Person/Person';
 const persons = (props) => props.persons.map((person, index) => {
     return <Person
         changed={(event) => { props.changed(event, index) }}
+        position={index}
         key={person.id}
         name={person.name}
         age={person.age}

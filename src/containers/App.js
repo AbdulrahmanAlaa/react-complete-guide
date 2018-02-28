@@ -3,11 +3,10 @@ import logo from '../logo.svg';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-
 class App extends Component {
   state = {
     persons: [
-      { id: 1, name: 'Abdo', age: 26 },
+      { id: 1, name: 'Abdo', age:26 },
       { id: 2, name: 'Islam', age: 25 },
       { id: 3, name: 'Mostafa', age: 28 },
     ],

@@ -12,7 +12,8 @@ class App extends PureComponent {
       { id: 2, name: 'Islam', age: 25 },
       { id: 3, name: 'Mostafa', age: 28 },
     ],
-    showPersons: false
+    showPersons: false,
+    toggleClicked:0
   };
   togglePersonsHandler = (event) => {
     const isShow = this.state.showPersons;
@@ -49,7 +50,9 @@ class App extends PureComponent {
 
     return (
       <Aux>
-        <button onClick={() => this.setState({ showPersons: true })} >Show Persons</button>
+        <button onClick={() => this.setState((prevState,props)=>{
+          return { showPersons: true ,toggleClicked: prevState.toggleClicked +1};
+        })} >Show Persons</button>
         <Cockpit
           persons={this.state.persons}
           showPersons={this.state.showPersons}
